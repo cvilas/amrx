@@ -1,0 +1,3 @@
+- Why are there 2 possible solutions to ikine question 2?
+- Check implementation of solution to ikine question 3.
+- review vkine questions
