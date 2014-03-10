@@ -32,11 +32,9 @@ J_BF_inB = [diff(r_BF_inB,q(1)) diff(r_BF_inB,q(2)) diff(r_BF_inB,q(3))];
 % what generalized velocity dq do you have to apply in a configuration q = [0;60°;-120°]
 % to lift the foot in vertical direction with v = [0;0;-1m/s];
 
-alpha = 0;
-beta = 60 * pi/180.0;
-gamma = -120 * pi/180.0;
-
+qval = pi/180 * ([0;60;-120]);
+Jval = eval(subs(J_BF_inB, q, qval));
 dx = [0;0;-1];
 
-dq = pinv(J_BF_inB) * dx;     
+dq = pinv(Jval) * dx;     
 
