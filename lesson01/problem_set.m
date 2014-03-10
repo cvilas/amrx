@@ -1,3 +1,5 @@
+clear all
+clc
 syms alpha beta gamma real
 
 % rotational matrices calculated in previous problem set
@@ -19,5 +21,22 @@ H_B1 = [R_B1,r_B1_inB;0 0 0 1];
 % create the cumulative transformation matrix
 H_B3 = H_B1*H_12*H_23; 
 
+q = [alpha;beta;gamma];
+
 % find the foot point position vector
 r_BF_inB = H_B3(1:3,:)*[r_3F_in3;1];
+
+% determine the foot point Jacobian J_BF_inB=d(r_BF_inB)/dq
+J_BF_inB = [diff(r_BF_inB,q(1)) diff(r_BF_inB,q(2)) diff(r_BF_inB,q(3))];
+
+% what generalized velocity dq do you have to apply in a configuration q = [0;60°;-120°]
+% to lift the foot in vertical direction with v = [0;0;-1m/s];
+
+alpha = 0;
+beta = 60 * pi/180.0;
+gamma = -120 * pi/180.0;
+
+dx = [0;0;-1];
+
+dq = pinv(J_BF_inB) * dx;     
+
