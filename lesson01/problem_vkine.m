@@ -48,7 +48,7 @@ for i=1:length(timeArr)
     % controller: 
     % step 1: create a simple p controller to determine the desired foot
     % point velocity
-    v = (rGoalArr(:,i) - rArr(:,i))/deltaT;
+    v = drGoal(t) + 10.0 * (rGoal(t) - rArr(:,i));
     % step 2: perform inverse differential kinematics to calculate the
     % generalized velocities
     dq = pinv(J_BF_inB(q(1),q(2),q(3))) * v;

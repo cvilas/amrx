@@ -34,6 +34,8 @@ while (~terminate)
     qGoal = q0 + pinv(J_BF_inB(q0(1),q0(2),q0(3))) * error; 
     q0 = qGoal;
 end
+disp('joint angles');
+disp(qGoal * 180/pi);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ikine problem 3: best solution for an unreachable position
@@ -49,13 +51,14 @@ while( ~terminate )
     error = rGoal - r;
     normError = norm(error);
     deltaError = abs(previousNormError - normError);
-    disp(deltaError);
     previousNormError = normError;
     if( deltaError < 1e-8 )
         terminate = true;
     end
     J = J_BF_inB(q0(1),q0(2),q0(3));
-    qGoal1 = q0 +  J' * inv(J * J' + lambda * eye(3)) * error; 
+    qGoal1 = q0 +  inv(J' * J + lambda * eye(3)) * J' * error; 
     q0 = qGoal1;
 end
-qGoal1 = qGoal1 * 180/pi;
+
+disp('joint angles');
+disp(qGoal1 * 180/pi);
