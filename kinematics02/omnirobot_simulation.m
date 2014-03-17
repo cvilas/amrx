@@ -2,9 +2,9 @@
 %% Try changing the wheel speeds to see what motions the robot does.
 numSeconds=10;
 % The speed of the first wheel (rad/s)
-phi1 = 1.0;
+phi1 = 0.0;
 % The speed of the second wheel (rad/s)
-phi2 = 1.0;
+phi2 = 0.0;
 % The speed of the third wheel (rad/s)
 phi3 = 1.0;  
   
