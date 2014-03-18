@@ -1,0 +1,2 @@
+- Derive the wheel equations 3.12-13, 3.18-22
+- Find degree of steerability and degree of mobility for various wheel configurations 
